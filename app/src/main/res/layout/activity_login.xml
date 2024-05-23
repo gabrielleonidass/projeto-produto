@@ -1,0 +1,46 @@
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="16dp">
+
+    <Button
+        android:id="@+id/buttonLogin"
+        android:layout_width="234dp"
+        android:layout_height="wrap_content"
+        android:text="Login"
+        app:layout_constraintTop_margin="16dp"
+        tools:layout_editor_absoluteX="69dp"
+        tools:layout_editor_absoluteY="381dp" />
+
+    <TextView
+        android:id="@+id/textViewForgotPassword"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Esqueceu a senha?"
+        android:textColor="@android:color/holo_blue_dark"
+        app:layout_constraintTop_margin="16dp"
+        tools:layout_editor_absoluteX="247dp"
+        tools:layout_editor_absoluteY="339dp" />
+
+    <EditText
+        android:id="@+id/editTextEmail"
+        android:layout_width="307dp"
+        android:layout_height="wrap_content"
+        android:hint="Email/Telefone"
+        android:inputType="textEmailAddress"
+        tools:layout_editor_absoluteX="32dp"
+        tools:layout_editor_absoluteY="225dp" />
+
+    <EditText
+        android:id="@+id/editTextPassword"
+        android:layout_width="363dp"
+        android:layout_height="wrap_content"
+        android:hint="Senha"
+        android:inputType="textPassword"
+        app:layout_constraintTop_margin="16dp"
+        tools:layout_editor_absoluteX="6dp"
+        tools:layout_editor_absoluteY="286dp" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
