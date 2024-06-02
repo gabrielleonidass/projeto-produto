@@ -7,10 +7,17 @@ import android.widget.EditText;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import androidx.activity.EdgeToEdge;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.graphics.Insets;
+import androidx.core.view.ViewCompat;
+import androidx.core.view.WindowInsetsCompat;
+
+
 public class Cadastro extends AppCompatActivity {
 
     private EditText editTextName, editTextEmail, editTextPhone, editTextPassword;
-    private Button buttonRegister;
+    private Button buttonCadasto;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -21,9 +28,9 @@ public class Cadastro extends AppCompatActivity {
         editTextEmail = findViewById(R.id.editTextEmail);
         editTextPhone = findViewById(R.id.editTextPhone);
         editTextPassword = findViewById(R.id.editTextPassword);
-        buttonRegister = findViewById(R.id.buttonRegister);
+        buttonCadasto = findViewById(R.id.buttonRegister);
 
-        buttonRegister.setOnClickListener(new View.OnClickListener() {
+        buttonCadasto.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 // Implementar lógica de registro

@@ -13,15 +13,6 @@
         android:theme="@style/Theme.ATVpont"
         tools:targetApi="31">
         <activity
-            android:name=".Produtos"
-            android:exported="false" />
-        <activity
-            android:name=".Cadastro"
-            android:exported="false" />
-        <activity
-            android:name=".LoginActivity"
-            android:exported="false" />
-        <activity
             android:name=".MainActivity"
             android:exported="true">
             <intent-filter>
