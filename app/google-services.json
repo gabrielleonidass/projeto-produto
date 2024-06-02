@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "9419163458",
+    "project_id": "projeto-servprod",
+    "storage_bucket": "projeto-servprod.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:9419163458:android:ac227c9bda20dd21972adb",
+        "android_client_info": {
+          "package_name": "com.example.atvpont"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDsJzZXf4gTqPC4ekm_KD2HlUuvjRF7nLc"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
