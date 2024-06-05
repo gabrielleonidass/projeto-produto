@@ -27,7 +27,7 @@ public class Cadastro extends AppCompatActivity {
         editTextName = findViewById(R.id.editTextName);
         editTextEmail = findViewById(R.id.editTextEmail);
         editTextPhone = findViewById(R.id.editTextPhone);
-        editTextPassword = findViewById(R.id.editTextPassword);
+        editTextPassword = findViewById(R.id.editTextSenha);
         buttonCadasto = findViewById(R.id.buttonRegister);
 
         buttonCadasto.setOnClickListener(new View.OnClickListener() {

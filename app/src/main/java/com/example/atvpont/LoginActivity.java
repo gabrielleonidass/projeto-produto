@@ -71,10 +71,10 @@ public class LoginActivity extends AppCompatActivity {
 
     private void Atributos() {
         editTextEmail = findViewById(R.id.editTextEmail);
-        editTextPassword = findViewById(R.id.editTextPassword);
+        editTextPassword = findViewById(R.id.editTextSenha);
         buttonLogin = findViewById(R.id.buttonLogin);
         buttonCadastro = findViewById(R.id.buttonCadastro);
-        textViewForgotPassword = findViewById(R.id.textViewForgotPassword);
+        textViewForgotPassword = findViewById(R.id.ESSView);
     }
 
     private void ChecarDados() {
