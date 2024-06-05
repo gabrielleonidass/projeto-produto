@@ -11,9 +11,6 @@ import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.graphics.Insets;
-import androidx.core.view.ViewCompat;
-import androidx.core.view.WindowInsetsCompat;
 
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
@@ -30,21 +27,13 @@ public class LoginActivity extends AppCompatActivity {
     private TextView textViewForgotPassword;
     private FirebaseAuth fbAuth;
 
-    private static WindowInsetsCompat onApplyWindowInsets(View v, WindowInsetsCompat insets) {
-        Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
-        v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
-        return insets;
-    }
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_login);
 
         fbAuth = FirebaseAuth.getInstance();
         Atributos();
-
-        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main), LoginActivity::onApplyWindowInsets);
 
         textViewForgotPassword.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -126,7 +115,7 @@ public class LoginActivity extends AppCompatActivity {
     }
 
     private void ParaTelaInicial() {
-        Intent intent = new Intent(LoginActivity.this, LoginActivity.class);
+        Intent intent = new Intent(LoginActivity.this, MainActivity.class);
         startActivity(intent);
     }
 }

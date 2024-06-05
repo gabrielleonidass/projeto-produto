@@ -1,83 +1,66 @@
-<androidx.constraintlayout.widget.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:padding="16dp">
 
     <EditText
         android:id="@+id/editTextName"
-        android:layout_width="158dp"
-        android:layout_height="65dp"
-        android:layout_marginTop="88dp"
+        android:layout_width="379dp"
+        android:layout_height="88dp"
         android:autofillHints=""
         android:hint="Nome"
         android:inputType="textPersonName"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.506"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        tools:layout_editor_absoluteX="-3dp"
+        tools:layout_editor_absoluteY="56dp" />
 
     <EditText
-        android:id="@+id/editTextEmail"
-        android:layout_width="158dp"
-        android:layout_height="66dp"
-        android:layout_marginTop="16dp"
+        android:id="@+id/editText"
+        android:layout_width="379dp"
+        android:layout_height="87dp"
         android:autofillHints=""
         android:hint="Email"
         android:inputType="textEmailAddress"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.506"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/editTextName" />
+        tools:layout_editor_absoluteX="-2dp"
+        tools:layout_editor_absoluteY="231dp" />
 
     <EditText
         android:id="@+id/editTextPhone"
-        android:layout_width="159dp"
-        android:layout_height="65dp"
-        android:layout_marginTop="16dp"
+        android:layout_width="379dp"
+        android:layout_height="88dp"
         android:autofillHints=""
         android:hint="Telefone"
         android:inputType="phone"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.509"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/editTextEmail" />
+        tools:layout_editor_absoluteX="-3dp"
+        tools:layout_editor_absoluteY="144dp" />
 
     <EditText
         android:id="@+id/editTextSenha"
-        android:layout_width="159dp"
-        android:layout_height="60dp"
-        android:layout_marginTop="16dp"
+        android:layout_width="379dp"
+        android:layout_height="88dp"
         android:hint="Senha"
         android:inputType="textPassword"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/editTextPhone" />
+        tools:layout_editor_absoluteX="-3dp"
+        tools:layout_editor_absoluteY="321dp" />
 
     <Button
         android:id="@+id/buttonRegister"
-        android:layout_width="0dp"
+        android:layout_width="379dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="32dp"
+        android:onClick="Cadastrar"
         android:text="Cadastrar"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/editTextSenha"
-        android:onClick="Cadastrar"/>
+        tools:layout_editor_absoluteX="0dp"
+        tools:layout_editor_absoluteY="462dp" />
 
     <Button
         android:id="@+id/buttonvoltar"
-        android:layout_width="0dp"
+        android:layout_width="379dp"
         android:layout_height="wrap_content"
         android:onClick="ParaTelaLogin"
         android:text="voltar"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
         tools:ignore="MissingConstraints"
-        tools:layout_editor_absoluteY="499dp" />
+        tools:layout_editor_absoluteX="-2dp"
+        tools:layout_editor_absoluteY="520dp" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
