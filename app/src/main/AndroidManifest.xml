@@ -22,7 +22,7 @@
         <activity android:name=".MainActivity" />
         <activity android:name=".Cadastro" />
         <activity android:name=".EsqueceuSenha" />
-        <!-- Adicione outras atividades conforme necessário -->
+        <activity android:name=".Produtos"> </activity>
 
     </application>
 </manifest>

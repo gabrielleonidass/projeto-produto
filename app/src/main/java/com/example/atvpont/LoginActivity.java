@@ -90,8 +90,11 @@ public class LoginActivity extends AppCompatActivity {
             @Override
             public void onComplete(@NonNull Task<AuthResult> task) {
                 if (task.isSuccessful()) {
-                    ParaTelaInicial();
-                } else {
+                    // Login bem-sucedido
+                    // Navegar para a tela de produtos
+                    startActivity(new Intent(LoginActivity.this, Produtos.class));
+                    finish(); // Finaliza a LoginActivity para que o usuário não possa voltar
+                }  else {
                     String error;
                     try {
                         throw Objects.requireNonNull(task.getException());
@@ -110,7 +113,8 @@ public class LoginActivity extends AppCompatActivity {
     }
 
     private void ParaCadastrar() {
-        Intent intent = new Intent(LoginActivity.this, Cadastro.class);
+        Intent intent;
+        intent = new Intent(LoginActivity.this, Cadastro.class);
         startActivity(intent);
     }
 

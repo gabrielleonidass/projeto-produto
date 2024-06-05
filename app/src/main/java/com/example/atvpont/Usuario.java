@@ -11,17 +11,26 @@ import androidx.core.view.WindowInsetsCompat;
 import java.util.ArrayList;
 
 public class Usuario {
-    protected String nome, email, Senha, numero;
-    protected ArrayList<Usuario> usuarioList;
+    private String nome, email, Senha, telefone;
+
+    public Usuario(String nome, String email, String Senha, String telefone) {
+        this.nome = nome;
+        this.email = email;
+        this.Senha = Senha;
+        this.telefone = telefone;
+    }
 
     public Usuario() {
+
     }
 
     public String getNome() {
+
         return nome;
     }
 
     public void setNome(String nome) {
+
         this.nome = nome;
     }
 
@@ -34,6 +43,7 @@ public class Usuario {
     }
 
     public String getSenha() {
+
         return Senha;
     }
 
@@ -41,11 +51,12 @@ public class Usuario {
         this.Senha = Senha;
     }
 
-    public String getnumero() {
-        return numero;
+    public String gettelefone() {
+
+        return telefone;
     }
 
-    public void setnumero(String numero) {
-        this.numero = numero;
+    public void settelefone(String telefone) {
+        this.telefone = telefone;
     }
 }
