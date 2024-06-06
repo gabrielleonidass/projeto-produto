@@ -3,50 +3,18 @@ package com.example.atvpont;
 public class Produto {
     private String nome;
     private String descricao;
-    private String preco;
-    private int imagemRecurso;
+    private double preco;
+    private int imagemResourceId;
 
-    public Produto(String nome, String descricao, String preco) {
+    public Produto(String nome, String descricao, double preco, int imagemResourceId) {
         this.nome = nome;
         this.descricao = descricao;
         this.preco = preco;
-        this.imagemRecurso = imagemRecurso;
-    }
-    public String getNome() {
-
-        return nome;
+        this.imagemResourceId = imagemResourceId;
     }
 
-    public void setNome(String nome) {
-
-        this.nome = nome;
-    }
-
-    public String getDescricao() {
-
-        return descricao;
-    }
-
-    public void setDescricao(String descricao) {
-
-        this.descricao = descricao;
-    }
-
-    public String getPreco() {
-
-        return preco;
-    }
-
-    public void setPreco(String preco) {
-
-        this.preco = preco;
-    }
-
-    public int getImagemRecurso() {
-        return imagemRecurso;
-    }
-
-    public void setImagemRecurso(int imagemRecurso) {
-        this.imagemRecurso = imagemRecurso;
-    }
+    public String getNome() { return nome; }
+    public String getDescricao() { return descricao; }
+    public double getPreco() { return preco; }
+    public int getImagemResourceId() { return imagemResourceId; }
 }

@@ -52,7 +52,7 @@ public class MainActivity extends AppCompatActivity {
                     Usuario user = Gerente.getInstance().getUser(email, password);
 
                     if (user != null) {
-
+                        // Login bem-sucedido, vá para a tela de produtos
                         Intent intent = new Intent(MainActivity.this, Produto.class);
                         startActivity(intent);
                     } else {
@@ -67,6 +67,7 @@ public class MainActivity extends AppCompatActivity {
         buttonRegister.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                // Vá para a tela de cadastro
                 Intent intent = new Intent(MainActivity.this, Cadastro.class);
                 startActivity(intent);
             }
