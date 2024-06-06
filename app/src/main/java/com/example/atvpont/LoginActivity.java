@@ -11,6 +11,9 @@ import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.graphics.Insets;
+import androidx.core.view.ViewCompat;
+import androidx.core.view.WindowInsetsCompat;
 
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
@@ -22,104 +25,99 @@ import com.google.firebase.auth.FirebaseAuthInvalidUserException;
 import java.util.Objects;
 
 public class LoginActivity extends AppCompatActivity {
-    private EditText editTextEmail, editTextPassword;
-    private Button buttonLogin, buttonCadastro;
-    private TextView textViewForgotPassword;
-    private FirebaseAuth fbAuth;
+
+    private EditText campoEmail, camposSenha; // Campos de entrada para email e senha
+    private Button botaoAcesso, buttonCadastro; // Botões de login e cadastro
+    private TextView textViewForgotPassword; // Texto para recuperar senha
+    private FirebaseAuth fbAuth; // Instância do FirebaseAuth
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_login);
+        setContentView(R.layout.activity_login); // Define o layout da atividade
 
-        fbAuth = FirebaseAuth.getInstance();
-        Atributos();
+        fbAuth = FirebaseAuth.getInstance(); // Obtém a instância do FirebaseAuth
+        inicializarComponente(); // Inicializa os componentes da interface
 
-        textViewForgotPassword.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(LoginActivity.this, EsqueceuSenha.class);
-                startActivity(intent);
-            }
-        });
-
-        buttonLogin.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                ChecarDados();
-            }
-        });
-
-        buttonCadastro.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                ParaCadastrar();
-            }
+        // Ajusta o padding para suportar áreas de recorte da tela
+        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main), (v, insets) -> {
+            Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
+            v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
+            return insets;
         });
     }
 
-    private void Atributos() {
-        editTextEmail = findViewById(R.id.editTextEmail);
-        editTextPassword = findViewById(R.id.editTextSenha);
-        buttonLogin = findViewById(R.id.buttonLogin);
+    // Inicializa os componentes da interface
+    private void inicializarComponente() {
+        campoEmail = findViewById(R.id.editTextEmail);
+        camposSenha = findViewById(R.id.editTextSenha);
+        botaoAcesso = findViewById(R.id.buttonLogin);
         buttonCadastro = findViewById(R.id.buttonCadastro);
         textViewForgotPassword = findViewById(R.id.ESSView);
     }
 
-    private void ChecarDados() {
-        String email = editTextEmail.getText().toString();
-        String senha = editTextPassword.getText().toString();
+    // Método para validar a autenticação do usuário
+    public void validarAutenticacao(View view) {
+        String email = campoEmail.getText().toString();
+        String senha = camposSenha.getText().toString();
 
-        if (!TextUtils.isEmpty(email)) {
-            if (!TextUtils.isEmpty(senha)) {
-                Usuario user = new Usuario();
-                user.setemail(email);
-                user.setSenha(senha);
+        if (!TextUtils.isEmpty(email)) { // Verifica se o campo email não está vazio
+            if (!TextUtils.isEmpty(senha)) { // Verifica se o campo senha não está vazio
+                Usuario usuario = new Usuario();
+                usuario.setemail(email); // Define o email do usuário
+                usuario.setSenha(senha); // Define a senha do usuário
 
-                login(user);
+                login(usuario); // Chama o método para logar o usuário
             } else {
-                Toast.makeText(LoginActivity.this, "Insira sua senha", Toast.LENGTH_SHORT).show();
+                Toast.makeText(this, "Preencher a senha", Toast.LENGTH_SHORT).show(); // Exibe mensagem se o campo senha estiver vazio
             }
         } else {
-            Toast.makeText(LoginActivity.this, "Insira seu e-mail", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "Preencha o e-mail", Toast.LENGTH_SHORT).show(); // Exibe mensagem se o campo email estiver vazio
         }
     }
 
-    private void login(Usuario user) {
-        fbAuth.signInWithEmailAndPassword(user.getEmail(), user.getSenha()).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+    // Método para logar o usuário utilizando Firebase Authentication
+    private void login(Usuario usuario) {
+        fbAuth.signInWithEmailAndPassword(
+                usuario.getEmail(), usuario.getSenha()
+        ).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
             @Override
             public void onComplete(@NonNull Task<AuthResult> task) {
                 if (task.isSuccessful()) {
-                    // Login bem-sucedido
-                    // Navegar para a tela de produtos
-                    startActivity(new Intent(LoginActivity.this, Produtos.class));
-                    finish(); // Finaliza a LoginActivity para que o usuário não possa voltar
-                }  else {
-                    String error;
+                    abrirHome(); // Se o login for bem-sucedido, abre a tela principal
+                } else {
+                    String excecao = "";
                     try {
                         throw Objects.requireNonNull(task.getException());
                     } catch (FirebaseAuthInvalidUserException e) {
-                        error = "Esse usuário não existe!";
+                        excecao = "Usuário não está cadastrado"; // Captura exceção para usuário não cadastrado
                     } catch (FirebaseAuthInvalidCredentialsException e) {
-                        error = "O e-mail ou a senha inserida está incorreto!";
+                        excecao = "Email ou senha incorreto"; // Captura exceção para credenciais incorretas
                     } catch (Exception e) {
-                        error = "Erro ao efetuar o login: " + e.getMessage();
+                        excecao = "Erro ao logar: " + e.getMessage(); // Captura outras exceções
                         e.printStackTrace();
                     }
-                    Toast.makeText(LoginActivity.this, error, Toast.LENGTH_SHORT).show();
+                    Toast.makeText(LoginActivity.this, excecao, Toast.LENGTH_SHORT).show(); // Exibe a mensagem de exceção
                 }
             }
         });
     }
 
-    private void ParaCadastrar() {
-        Intent intent;
-        intent = new Intent(LoginActivity.this, Cadastro.class);
+    // Método para abrir a tela principal
+    private void abrirHome() {
+        Intent i = new Intent(LoginActivity.this, Produtos.class);
+        startActivity(i);
+    }
+
+    // Método para abrir a tela de cadastro
+    public void ParaCadastrar(View view) {
+        Intent intent = new Intent(LoginActivity.this, Cadastro.class);
         startActivity(intent);
     }
 
-    private void ParaTelaInicial() {
-        Intent intent = new Intent(LoginActivity.this, MainActivity.class);
+    // Método para abrir a tela de "Esqueceu a senha"
+    public void esqueceuSenha(View view) {
+        Intent intent = new Intent(LoginActivity.this, EsqueceuSenha.class);
         startActivity(intent);
     }
 }
